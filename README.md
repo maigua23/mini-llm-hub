@@ -1,40 +1,33 @@
-Expo + Ollama Mobile LLM App
+Mini LLM Hub (Development)
 
-This project is a mobile app built with Expo
- that connects to a locally running Ollama
- server to run lightweight language models (e.g., Mistral). The goal is to make it possible to interact with an LLM directly from a mobile app, without relying on cloud services.
+This project is a mobile + web app built with Expo (React Native) and a FastAPI backend.
+Its goal is to serve as a hub for multiple LLMs (starting with Groq-hosted models, but extensible to others).
 
-📦 Setup
+Getting Started
+Backend
+cd backend
+python -m venv venv && source venv/bin/activate
+pip install -r requirements.txt
+python main.py
 
-Install dependencies
 
+Environment variables are required (.env file in backend/):
+
+GROQ_API_KEY=your_api_key_here
+
+Frontend
 npm install
+npx expo start 
 
 
-Start the Expo dev server
+Open with Expo Go, iOS Simulator, or Android Emulator.
 
-npx expo start
+Notes
 
+Backend: FastAPI with CORS enabled for mobile/web.
 
-Open the app using:
+Models: Currently using models from Groq.
 
-Expo Go
- (quick testing)
+Frontend communicates via REST to the backend.
 
-Android Emulator / iOS Simulator
-
-Development build
-
-🧠 How it works
-
-Backend: Ollama runs locally (e.g., ollama run mistral) or remotely if hosted online.
-
-Frontend: React Native (via Expo) calls the Ollama API.
-
-Goal: Deploy a simple LLM-powered mobile app for testing and learning.
-
-🔗 Resources
-
-Expo Docs
-
-Ollama Docs
+App is designed to be extended with multiple LLMs under one hub.

@@ -75,13 +75,13 @@ const darkTheme = {
 // -------------------- LLMs --------------------
 const LLMS: LLM[] = [
   {
-    id: "mistral",
-    name: "Mistral",
+    id: "llama-3.1-8b-instant",
+    name: "LLaMA 3.1 (8B Instant)",
     icon: { lib: "Ionicons", name: "flash-outline" }, // ⚡
     description:
-      "Fast and efficient for general conversations, coding help, and quick answers.",
-    colorStart: "#FF6B35",
-    colorEnd: "#FF9A7B",
+     "Fast, low-latency model from Meta's LLaMA 3 family. Great for chat, reasoning, and coding tasks.",
+    colorStart: "#3498DB",
+    colorEnd: "#66B2FF",
     status: "active",
   },
   {
@@ -105,12 +105,12 @@ const LLMS: LLM[] = [
     status: "coming-soon",
   },
   {
-    id: "llama",
-    name: "Llama",
+    id: "mistral",
+    name: "Mistral",
     icon: { lib: "MaterialCommunityIcons", name: "robot-outline" }, // 🤖
-    description: "Open-source powerhouse for detailed explanations and research.",
-    colorStart: "#3498DB",
-    colorEnd: "#66B2FF",
+    description: "Fast and efficient for general conversations, coding help, and quick answers.",
+    colorStart: "#FF6B35",
+    colorEnd: "#FF9A7B",
     status: "coming-soon",
   },
 ];
@@ -349,10 +349,10 @@ function ChatScreen({ route, navigation }: any) {
     setLoading(true);
 
     try {
-      const res = await fetch("http://192.168.100.115:8000/chat", {
+      const res = await fetch("http://localhost:8000/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ prompt: userMsg.text, model: llm.id }),
+        body: JSON.stringify({ prompt: userMsg.text}),
       });
 
       if (!res.ok) {
